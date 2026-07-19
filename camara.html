@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Prueba Cámara</title>
+</head>
+
+<body>
+
+<video id="video" autoplay playsinline></video>
+
+<script>
+
+navigator.mediaDevices.getUserMedia({
+video:true
+})
+
+.then(stream=>{
+
+document.getElementById("video").srcObject=stream;
+
+})
+
+.catch(err=>{
+
+alert(err);
+
+});
+
+</script>
+
+</body>
+</html>
