@@ -3,80 +3,104 @@
 
 <head>
 
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
 
-<script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+    <title>Serenata RA ❤️</title>
 
-<script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- A-Frame -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+
+    <!-- MindAR -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
+    <script src="script.js" defer></script>
 
 </head>
 
 <body>
 
 <div id="loading">
-Preparando cámara...
+    <h2>Preparando cámara...</h2>
 </div>
 
-<audio id="music" preload="auto">
-<source src="assets/musica.mp3" type="audio/mpeg">
+<audio
+    id="music"
+    preload="auto"
+    playsinline>
+
+    <source src="assets/musica.mp3" type="audio/mpeg">
+
 </audio>
 
 <a-scene
 
-mindar-image="imageTargetSrc: assets/target.mind;"
+    id="scene"
 
-color-space="sRGB"
+    mindar-image="
 
-renderer="colorManagement: true, physicallyCorrectLights"
+        imageTargetSrc: assets/target.mind;
 
-vr-mode-ui="enabled: false"
+        autoStart: true;
 
-device-orientation-permission-ui="enabled: false"
+        uiScanning: yes;
+
+        uiLoading: yes;
+
+        uiError: yes;
+
+    "
+
+    color-space="sRGB"
+
+    renderer="colorManagement:true; physicallyCorrectLights:true"
+
+    vr-mode-ui="enabled:false"
+
+    device-orientation-permission-ui="enabled:false"
 
 >
 
-<a-assets>
+    <a-assets>
 
-<a-asset-item
+        <a-asset-item
 
-id="modelo3d"
+            id="mariachi"
 
-src="assets/mariachi.glb">
+            src="assets/mariachi.glb">
 
-</a-asset-item>
+        </a-asset-item>
 
-</a-assets>
+    </a-assets>
 
-<a-camera
+    <a-camera
+        position="0 0 0"
+        look-controls="enabled:false">
+    </a-camera>
 
-position="0 0 0"
+    <a-entity mindar-image-target="targetIndex:0">
 
-look-controls="enabled:false">
+        <a-gltf-model
 
-</a-camera>
+            id="modelo"
 
-<a-entity mindar-image-target="targetIndex: 0">
+            src="#mariachi"
 
-<a-gltf-model
+            position="0 0 0"
 
-id="modelo"
+            rotation="0 0 0"
 
-src="#modelo3d"
+            scale="0.25 0.25 0.25"
 
-rotation="0 0 0"
+            visible="false">
 
-position="0 0 0.1"
+        </a-gltf-model>
 
-scale="0.01 0.01 0.01"
-
-visible="false">
-
-</a-gltf-model>
-
-</a-entity>
+    </a-entity>
 
 </a-scene>
 
