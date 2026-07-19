@@ -3,104 +3,111 @@
 
 <head>
 
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-    <title>Serenata RA ❤️</title>
+  <title>Serenata RA ❤️</title>
 
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 
-    <!-- A-Frame -->
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <!-- A-Frame -->
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 
-    <!-- MindAR -->
-    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  <!-- MindAR -->
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 
-    <script src="script.js" defer></script>
+  <script src="script.js" defer></script>
 
 </head>
 
 <body>
 
 <div id="loading">
-    <h2>Preparando cámara...</h2>
+  Preparando cámara...
 </div>
 
-<audio
-    id="music"
-    preload="auto"
-    playsinline>
-
-    <source src="assets/musica.mp3" type="audio/mpeg">
-
+<audio id="music" preload="auto" playsinline>
+  <source src="assets/musica.mp3" type="audio/mpeg">
 </audio>
 
 <a-scene
 
-    id="scene"
+id="scene"
 
-    mindar-image="
+mindar-image="
+imageTargetSrc: assets/target.mind;
+maxTrack:1;
+filterMinCF:0.0001;
+filterBeta:0.001;
+uiScanning:true;
+uiLoading:true;
+uiError:true;
+"
 
-        imageTargetSrc: assets/target.mind;
+embedded="false"
 
-        autoStart: true;
+color-space="sRGB"
 
-        uiScanning: yes;
+renderer="antialias:true;
+alpha:true;
+physicallyCorrectLights:true;
+colorManagement:true;"
 
-        uiLoading: yes;
+vr-mode-ui="enabled:false"
 
-        uiError: yes;
+device-orientation-permission-ui="enabled:false"
 
-    "
-
-    color-space="sRGB"
-
-    renderer="colorManagement:true; physicallyCorrectLights:true"
-
-    vr-mode-ui="enabled:false"
-
-    device-orientation-permission-ui="enabled:false"
+loading-screen="enabled:false"
 
 >
 
-    <a-assets>
+<a-assets>
 
-        <a-asset-item
+<a-asset-item
 
-            id="mariachi"
+id="mariachi"
 
-            src="assets/mariachi.glb">
+src="assets/mariachi.glb">
 
-        </a-asset-item>
+</a-asset-item>
 
-    </a-assets>
+</a-assets>
 
-    <a-camera
-        position="0 0 0"
-        look-controls="enabled:false">
-    </a-camera>
+<a-camera
 
-    <a-entity mindar-image-target="targetIndex:0">
+id="camera"
 
-        <a-gltf-model
+position="0 0 0"
 
-            id="modelo"
+look-controls="enabled:false"
 
-            src="#mariachi"
+cursor="rayOrigin: mouse"
 
-            position="0 0 0"
+raycaster="objects: .clickable">
 
-            rotation="0 0 0"
+</a-camera>
 
-            scale="0.25 0.25 0.25"
+<a-entity mindar-image-target="targetIndex:0">
 
-            visible="false">
+<a-gltf-model
 
-        </a-gltf-model>
+id="modelo"
 
-    </a-entity>
+src="#mariachi"
+
+position="0 0 0"
+
+rotation="0 0 0"
+
+scale="0.2 0.2 0.2"
+
+visible="false">
+
+</a-gltf-model>
+
+</a-entity>
 
 </a-scene>
 
