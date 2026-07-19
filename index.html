@@ -3,63 +3,41 @@
 
 <head>
 
-  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image.prod.js"></script>
 
-  <title>Serenata RA ❤️</title>
+<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
 
-  <link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image-aframe.prod.js"></script>
 
-  <!-- A-Frame -->
-  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+<link rel="stylesheet" href="style.css">
 
-  <!-- MindAR -->
-  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
-
-  <script src="script.js" defer></script>
+<script src="script.js" defer></script>
 
 </head>
 
 <body>
 
 <div id="loading">
-  Preparando cámara...
+Preparando cámara...
 </div>
 
-<audio id="music" preload="auto" playsinline>
-  <source src="assets/musica.mp3" type="audio/mpeg">
+<audio id="music" preload="auto">
+<source src="assets/musica.mp3" type="audio/mpeg">
 </audio>
 
 <a-scene
 
-id="scene"
-
-mindar-image="
-imageTargetSrc: assets/target.mind;
-maxTrack:1;
-filterMinCF:0.0001;
-filterBeta:0.001;
-uiScanning:true;
-uiLoading:true;
-uiError:true;
-"
-
-embedded="false"
+mindar-image="imageTargetSrc: assets/target.mind;"
 
 color-space="sRGB"
 
-renderer="antialias:true;
-alpha:true;
-physicallyCorrectLights:true;
-colorManagement:true;"
+renderer="colorManagement: true, physicallyCorrectLights"
 
-vr-mode-ui="enabled:false"
+vr-mode-ui="enabled: false"
 
-device-orientation-permission-ui="enabled:false"
-
-loading-screen="enabled:false"
+device-orientation-permission-ui="enabled: false"
 
 >
 
@@ -67,7 +45,7 @@ loading-screen="enabled:false"
 
 <a-asset-item
 
-id="mariachi"
+id="modelo3d"
 
 src="assets/mariachi.glb">
 
@@ -77,31 +55,25 @@ src="assets/mariachi.glb">
 
 <a-camera
 
-id="camera"
-
 position="0 0 0"
 
-look-controls="enabled:false"
-
-cursor="rayOrigin: mouse"
-
-raycaster="objects: .clickable">
+look-controls="enabled:false">
 
 </a-camera>
 
-<a-entity mindar-image-target="targetIndex:0">
+<a-entity mindar-image-target="targetIndex: 0">
 
 <a-gltf-model
 
 id="modelo"
 
-src="#mariachi"
-
-position="0 0 0"
+src="#modelo3d"
 
 rotation="0 0 0"
 
-scale="0.2 0.2 0.2"
+position="0 0 0.1"
+
+scale="0.01 0.01 0.01"
 
 visible="false">
 
