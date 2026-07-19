@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Serenata RA ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- A-Frame -->
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
+    <!-- MindAR -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
+    <script src="script.js" defer></script>
+
+</head>
+
+<body>
+
+<div id="loading">
+    <h2>Preparando cámara...</h2>
+</div>
+
+<audio
+    id="music"
+    preload="auto"
+    playsinline>
+
+    <source src="assets/musica.mp3" type="audio/mpeg">
+
+</audio>
+
+<a-scene
+
+    id="scene"
+
+    mindar-image="
+
+        imageTargetSrc: assets/target.mind;
+
+        autoStart: true;
+
+        uiScanning: yes;
+
+        uiLoading: yes;
+
+        uiError: yes;
+
+    "
+
+    color-space="sRGB"
+
+    renderer="colorManagement:true; physicallyCorrectLights:true"
+
+    vr-mode-ui="enabled:false"
+
+    device-orientation-permission-ui="enabled:false"
+
+>
+
+    <a-assets>
+
+        <a-asset-item
+
+            id="mariachi"
+
+            src="assets/mariachi.glb">
+
+        </a-asset-item>
+
+    </a-assets>
+
+    <a-camera
+        position="0 0 0"
+        look-controls="enabled:false">
+    </a-camera>
+
+    <a-entity mindar-image-target="targetIndex:0">
+
+        <a-gltf-model
+
+            id="modelo"
+
+            src="#mariachi"
+
+            position="0 0 0"
+
+            rotation="0 0 0"
+
+            scale="0.25 0.25 0.25"
+
+            visible="false">
+
+        </a-gltf-model>
+
+    </a-entity>
+
+</a-scene>
+
+</body>
+
+</html>
